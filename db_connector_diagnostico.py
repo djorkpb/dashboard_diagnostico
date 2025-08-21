@@ -34,9 +34,9 @@ def carregar_dados_do_banco():
         os.orse_tmencerramento AS data_conclusao,
         -- Categoriza o tipo de serviço principal
         CASE
-            WHEN os.svtp_id = 718 THEN 'Diagnóstico'
-            WHEN os.svtp_id IN (719, 720, 803) THEN 'Sondagem'
-            WHEN os.svtp_id IN (33, 82, 32, 804, 811, 810, 36, 726, 807) THEN 'Supressão'
+            WHEN os.svtp_id = 802 THEN 'Diagnóstico'
+            WHEN os.svtp_id IN (803) THEN 'Sondagem'
+            WHEN os.svtp_id IN (804, 810, 811) THEN 'Supressão'
             ELSE 'Outro'
         END AS tipo_servico,
         -- CORREÇÃO: Lógica de status customizada
@@ -65,9 +65,9 @@ def carregar_dados_do_banco():
         Parametros
     WHERE
         os.svtp_id IN (
-            718, -- Diagnóstico
-            719, 720, 803, -- Sondagem
-            33, 82, 32, 804, 811, 810, 36, 726, 807 -- Supressão
+            802, -- Diagnóstico
+            803, -- Sondagem
+            804, 810, 811 -- Supressão
         )
         AND os.orse_tmgeracao >= Parametros.data_inicial
         AND os.orse_tmgeracao <= NOW();
